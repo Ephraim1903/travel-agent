@@ -600,6 +600,11 @@ def bad(message, code=400):
 
 # Safety net: if anything unexpected breaks anywhere in the app, send back
 # clean JSON instead of a blank or HTML error page the browser can't read.
+@app.route("/favicon.ico")
+def favicon():
+    return "", 204
+
+
 @app.errorhandler(Exception)
 def handle_any_error(e):
     import traceback
